@@ -70,7 +70,9 @@ app.get("/all-meals", async (req, res) => {
 app.get("/first-meal", async (req, res) => {
   try {
     const firstMeal = await knex("Meal").select().orderBy("id").first();
-    res.status(200).json(allMeals);
+
+    res.status(200).json(firstMeal);
+
   } catch (error) {
     console.error(error);
     res.status(500).send("Something went wrong");
@@ -80,8 +82,10 @@ app.get("/first-meal", async (req, res) => {
 //	Respond with the last meal (meaning with the maximum id)
 app.get("/last-meal", async (req, res) => {
   try {
+
     const firstMeal = await knex("Meal").select().orderBy("id", 'desc').first();
-    res.status(200).json(allMeals);
+  res.status(200).json(lastMeal);
+
   } catch (error) {
     console.error(error);
     res.status(500).send("Something went wrong");
