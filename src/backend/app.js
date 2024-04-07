@@ -17,6 +17,7 @@ const router = express.Router();
 const buildPath = path.join(__dirname, "../../dist");
 const port = process.env.PORT || 3000;
 
+
 // For week4 no need to look into this!
 // Serve the built client html
 app.use(express.static(buildPath));
@@ -28,7 +29,8 @@ app.use(express.json());
 
 app.use(cors());
 
-router.use("/meals", mealsRouter);
+app.use("/api/meals", mealsRouter);
+app.use("/api/reservations", reservationsRouter)
 
 if (process.env.API_PATH) {
   app.use(process.env.API_PATH, router);
