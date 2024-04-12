@@ -22,12 +22,14 @@ router.post("/", async (req, res) => {
       res.status(201).json({ message: "Meal added successfully" });
     }
   } catch (error) {
+      console.log(error);
     res.status(500).json({ error: "Server error" });
   }
 });
 
 // GET	Returns the reservation by id
 router.get("/:id", async (req, res) => {
+    console.log('req', req);
   try {
     const id = req.params.id;
       const getReserev = await knex.select("*").from("reservation").where("id", id).first();
