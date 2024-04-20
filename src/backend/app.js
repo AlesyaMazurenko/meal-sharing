@@ -1,7 +1,8 @@
 import express from "express";
 import path from "path";
 import mealsRouter from "./api/meals.js";
-import reservationsRouter from "./api/reservations.js"
+import reservationsRouter from "./api/reservations.js";
+import reviewsRouter from "./api/reviews.js";
 import cors from "cors";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -31,7 +32,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/meals", mealsRouter);
-app.use("/api/reservations", reservationsRouter)
+app.use("/api/reservations", reservationsRouter);
+app.use("/api/reviews", reviewsRouter);
 
 if (process.env.API_PATH) {
   app.use(process.env.API_PATH, router);
@@ -47,7 +49,7 @@ app.use("*", (req, res) => {
 // Respond with all meals in the future (relative to the when datetime)
 app.get("/future-meals", async (req, res) => {
   try {
-    const futureMeals = await knex("Meal")
+    const futureMeals = await knex("meal")
       .select()
       .where("when", ">", new Date());
     if (futureMeals.length === 0) {
@@ -65,7 +67,7 @@ app.get("/future-meals", async (req, res) => {
 app.get("/past-meals", async (req, res) => {
   try {
     const date = new Date();
-    const pastMeals = await knex("Meal").select().where("when", "<", date);
+    const pastMeals = await knex("meal").select().where("when", "<", date);
     res.status(200).json(pastMeals);
   } catch (error) {
     console.error(error);
@@ -76,7 +78,7 @@ app.get("/past-meals", async (req, res) => {
 //Respond with all meals sorted by ID
 app.get("/all-meals", async (req, res) => {
   try {
-    const allMeals = await knex("Meal").select().orderBy("id");
+    const allMeals = await knex("meal").select().orderBy("id");
     res.status(200).json(allMeals);
   } catch (error) {
     console.error(error);
@@ -87,7 +89,7 @@ app.get("/all-meals", async (req, res) => {
 //	Respond with the first meal (meaning with the minimum id)
 app.get("/first-meal", async (req, res) => {
   try {
-    const firstMeal = await knex("Meal").select().orderBy("id").first();
+    const firstMeal = await knex("meal").select().orderBy("id").first();
 
     res.status(200).json(firstMeal);
 
@@ -101,7 +103,7 @@ app.get("/first-meal", async (req, res) => {
 app.get("/last-meal", async (req, res) => {
   try {
 
-    const lastMeal = await knex("Meal").select().orderBy("id", "desc").first();
+    const lastMeal = await knex("meal").select().orderBy("id", "desc").first();
     res.status(200).json(lastMeal);
 
   } catch (error) {
