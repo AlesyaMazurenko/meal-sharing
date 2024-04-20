@@ -6,30 +6,85 @@ const router = express.Router();
 
 
 router.get("/", async (req, res) => {
-  // console.log('req', req.query.id);
+  const {
+    maxPrice,
+    availableReservations,
+    title,
+    dateAfter,
+    dateBefore,
+    limit,
+    sortKey,
+    sortDir,
+  } = req.query;
+
   try {
-    const meals = await knex("meal").select(" * ");
-    res.json(meals);
+    const meals = await knex("meal")
+      .select(" * ")
+      .countDistinct("reservation.id as total_reservations")
+      .leftJoin("reservation", "meal.id", "=", "reservation.meal_id")
+      .groupBy("meal.id", "meal.title", "meal.max_reservations", "meal.price", "meal.when");
+    
+    if (maxPrice !== undefined) {
+      const price = parseFloat(maxPrice);
+   
+      if (!isNaN(price) && price >= 0) {
+        query.where("Meal.price", "<=", price);
+      } else {
+        res.status(400).send("Invalid maxPrice");
+        return;
+      }
+    }
+      
+       if (availableReservations === "true") {
+         query.having(
+           "total_reservations",
+           "<",
+           knex.raw("meal.max_reservations")
+         );
+       } else if (availableReservations === "false") {
+         query.having(
+           "total_reservations",
+           ">=",
+           knex.raw("meal.max_reservations")
+         );
+       }
+    
+     if (title !== undefined) {
+       query.where("meal.title", "like", `%${title}%`);
+     }
+
+     if (dateAfter !== undefined) {
+       query.where("meal.when", ">", dateAfter);
+     }
+
+     if (dateBefore !== undefined) {
+       query.where("meal.when", "<", dateBefore);
+     }
+
+     if (limit !== undefined) {
+       query.limit(parseInt(limit, 10));
+     }
+    
+    
+    if (sortKey !== undefined) {
+      const direction = sortDir === "desc" ? "desc" : "asc";
+      query.orderBy(`Meal.${sortKey}`, direction);
+    }
+
+    const result = await query;
+
+    res.json(result);
+
   } catch (error) {
     res.status(500).json({ error: "Server error" });
   }
 });
-// { 
-//         "title": "Varenyky",
-//         "description": "Varenyky",
-//         "location": "Aarhus",
-//         "when": "2024-01-19T11:45:00.000Z",
-//         "max_reservations": "100",
-//         "price": "20",
-//         "created_date": "2022-11-06T23:00:00.000Z"
-// }
+
 //POST	Adds a new meal to the database
 router.post("/", async (req, res) => {
   try {
     const newMeal = req.body;
-    console.log('req/', newMeal);
     const result = await knex("meal").insert(newMeal);
-    console.log('res', result);
     if (result) {
       res.status(201).json({ message: "Meal added successfully" });
     }
@@ -40,9 +95,7 @@ router.post("/", async (req, res) => {
 
 // GET	Returns the meal by id
 router.get("/:id", async (req, res) => {
-   console.log("params");
-  const id = req.query.id;
-   console.log("params", id);
+  const id = req.params.id;
   try {
     const getMeal = await knex("meal").select("*").where("id", id);
     
