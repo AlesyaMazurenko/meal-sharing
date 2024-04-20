@@ -1,3 +1,4 @@
+
 import 'dotenv/config';
 import path, { dirname } from 'path';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
@@ -12,6 +13,7 @@ const __dirname = dirname(__filename);
 const outputDirectory = 'dist';
 
 export default {
+
   entry: ['babel-polyfill', './src/client/index.js'],
   output: {
     path: path.join(__dirname, outputDirectory),

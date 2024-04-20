@@ -1,8 +1,10 @@
+
 import knex from 'knex'
 import 'dotenv/config';
 
 // create connection
 const myKnex = knex({
+
   client: "mysql2",
   connection: {
     host: process.env.DB_HOST,
@@ -15,8 +17,10 @@ const myKnex = knex({
 });
 
 // Check that the connection works
+
 myKnex.raw("SELECT VERSION()").then(() => {
   console.log(`connection to db successful!`);
 });
 
 export default myKnex;
+
