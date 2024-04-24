@@ -7,7 +7,7 @@ const fetcher = (url) => {
 };
 
 function MealsList() {
-     const { data, error, isLoading } = useSWR(
+     const { data, error, isLoading } = useSwr(
        "http://localhost:5001/api/meals",
        fetcher
   ); 
@@ -16,9 +16,12 @@ function MealsList() {
   
   return (
     <div>
-      {data.map((meal) =><MealItem key={meal.id} meal={meal} />)}
+      <p>meal list</p>
+      {data.map((meal) => (
+        <MealItem key={meal.id} meal={meal} />
+      ))}
     </div>
-  )
+  );
 }
    
 export default MealsList;

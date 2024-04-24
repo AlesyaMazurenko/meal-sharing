@@ -4,7 +4,16 @@ import knex from "../database.js";
 
 const router = express.Router();
 
+router.get("/", async(req, res) => {
+    try {
+      const meals = await knex("meal").select();
+      res.json(meals);
+    } catch (error) {
+      res.status(500).send({ error: "Server error" });
+    }
+}
 
+)
 router.get("/", async (req, res) => {
   const {
     maxPrice,
@@ -19,7 +28,7 @@ router.get("/", async (req, res) => {
 
   try {
     const meals = await knex("meal")
-      .select(" * ")
+      .select("*")
       .countDistinct("reservation.id as total_reservations")
       .leftJoin("reservation", "meal.id", "=", "reservation.meal_id")
       .groupBy("meal.id", "meal.title", "meal.max_reservations", "meal.price", "meal.when");
@@ -28,7 +37,7 @@ router.get("/", async (req, res) => {
       const price = parseFloat(maxPrice);
    
       if (!isNaN(price) && price >= 0) {
-        query.where("Meal.price", "<=", price);
+        query.where("meal.price", "<=", price);
       } else {
         res.status(400).send("Invalid maxPrice");
         return;
