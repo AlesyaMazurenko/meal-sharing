@@ -13,10 +13,11 @@ function MealsList() {
   ); 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error in fetching data</div>;
-  
+  console.log('data', data);
   return (
     <div>
-      <p>meal list</p>
+    {/* // <div style="background-image: url(../../../../../../../public/images/spencer-davis.jpg);"> */}
+      <h1>Meal list</h1>
       {data.map((meal) => (
         <MealItem key={meal.id} meal={meal} />
       ))}

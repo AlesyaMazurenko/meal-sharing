@@ -1,4 +1,4 @@
-
+import React from "react";
 function MealItem({ meal }) {
     return (
         <div className="meal_card">

@@ -1,0 +1,23 @@
+.nav {
+    padding: 20px 30px;
+    display: flex;
+}
+
+.nav-item {
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid rgb(147, 52, 235);
+    border-radius: 4px;
+    color: blueviolet;
+    font-weight: 600;
+}
+
+.nav-item:not(:last-child) {
+    margin-right: 14px;
+}
+
+.active {
+    color: white;
+    background-color: blueviolet;
+    font-weight: 900;
+}
