@@ -1,11 +1,17 @@
 import React from "react";
+import './Header.css';
 
 function Header() {
     return (
-        <div>
-            <h1>Meal-sharing app</h1>
-            {/* <a href>reservation</a> */}
+      <div>
+        <div className="container">
+          <div className="div-container">
+            <h1 className="header_title">
+            Meal<span classname='header_un'>the burger</span>Sharing
+            </h1>
+          </div>
         </div>
+      </div>
     );
 }
 
