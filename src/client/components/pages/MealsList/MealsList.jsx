@@ -1,6 +1,7 @@
 import React from 'react';
 import useSwr from 'swr';
 import MealItem from './MealItem';
+import { AppBar } from '../../Appbar/Appbar';
 
 const fetcher = (url) => {
     return fetch(url).then((res) => res.json());
@@ -16,7 +17,7 @@ function MealsList() {
   console.log('data', data);
   return (
     <div>
-    {/* // <div style="background-image: url(../../../../../../../public/images/spencer-davis.jpg);"> */}
+      <AppBar/>
       <h1>Meal list</h1>
       {data.map((meal) => (
         <MealItem key={meal.id} meal={meal} />
