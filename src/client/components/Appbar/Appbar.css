@@ -6,9 +6,9 @@
 .nav-item {
     padding: 5px 10px;
     text-decoration: none;
-    border: 1px solid rgb(147, 52, 235);
+    border: 1px solid rgb(30, 122, 52);
     border-radius: 4px;
-    color: blueviolet;
+    color: rgb(30, 122, 52);
     font-weight: 600;
 }
 
@@ -18,6 +18,6 @@
 
 .active {
     color: white;
-    background-color: blueviolet;
+    background-color: rgb(49, 183, 114);
     font-weight: 900;
 }
