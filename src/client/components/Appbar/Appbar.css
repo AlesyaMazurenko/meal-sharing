@@ -7,8 +7,9 @@
     padding: 5px 10px;
     text-decoration: none;
     border: 1px solid rgb(30, 122, 52);
+    background-color: white;
     border-radius: 4px;
-    color: rgb(30, 122, 52);
+    color: rgb(227, 233, 228);
     font-weight: 600;
 }
 
@@ -20,4 +21,8 @@
     color: white;
     background-color: rgb(49, 183, 114);
     font-weight: 900;
+}
+
+.not-active {
+ /* color: rgb(227, 233, 228); */
 }
