@@ -10,8 +10,15 @@ export const AppBar = () => {
   return (
     <div className="appbar">
       <nav>
-        <NavLink className={getClassName} to="/" end>Home</NavLink>
-        <NavLink className={getClassName} to="/meals">Meals</NavLink>
+        <NavLink className={getClassName} to="/">
+          Home
+        </NavLink>
+        <NavLink className={getClassName} to="/meals">
+          Meals
+        </NavLink>
+        <NavLink className={getClassName} to="/reservations">
+          Reservations
+        </NavLink>
       </nav>
     </div>
   );
