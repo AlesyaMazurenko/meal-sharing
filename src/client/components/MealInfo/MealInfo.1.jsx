@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { AppBar } from "../Appbar/Appbar";
 import { NavLink, Link, Outlet } from "react-router-dom";
 import useSWR from "swr";
-// import { fetcher } from "./MealInfo";
+
 
 export default function MealInfo() {
   const [newReservation, setNewReservation] = useState({
