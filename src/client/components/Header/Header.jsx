@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import './Header.css';
+import './Main.css';
 
-function Header() {
+export default function Main() {
     return (
       <div>
         <div className="container">
@@ -21,5 +21,3 @@ function Header() {
       </div>
     );
 }
-
-export default Header;
