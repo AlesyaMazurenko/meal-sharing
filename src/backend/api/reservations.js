@@ -18,9 +18,9 @@ router.post("/", async (req, res) => {
   try {
     const newReserv = req.body;
     const result = await knex("reservation").insert(newReserv);
-    if (result) {
-      res.status(201).json({ message: "Meal added successfully" });
-    }
+  
+    res.status(201).json({ message: "Meal added successfully" });
+    
   } catch (error) {
       console.log(error);
     res.status(500).json({ error: "Server error" });
