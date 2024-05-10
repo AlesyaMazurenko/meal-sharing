@@ -5,6 +5,7 @@ import { NavLink, Link } from "react-router-dom";
 import useSWR from 'swr';
 import './MealInfo.css'
 import Reviews from "../Reviews/Reviews";
+import FormReserv from "./Reservation/FormReserve";
 
 const fetcher = (url) => {
   return fetch(url).then((res) => res.json());
@@ -12,6 +13,7 @@ const fetcher = (url) => {
 
 function MealInfo() {
 
+  const { id } = useParams();
      const [newReservation, setNewReservation] = useState({
        contact_name: "",
        contact_email: "",
@@ -21,9 +23,6 @@ function MealInfo() {
        created_date: "",
      });
 
-     const [showModal, setShowModal] = useState(false);
-
-    const { id } = useParams();
     
     const { data, error, isLoading } = useSWR(
         `http://localhost:5001/api/meals/${id}`,
@@ -39,7 +38,6 @@ function MealInfo() {
     
     return (
       <>
-        <AppBar />
         <main>
           {error && <p>Sorry, burger is not found</p>}
           {data && (
@@ -74,22 +72,27 @@ function MealInfo() {
                     {data[0].max_reservations}
                   </span>
                 </p>
+
+                <NavLink to="/meals" className="meal-link">
+                  Go Back
+                </NavLink>
               </div>
             </div>
           )}
 
           <div>
-            <NavLink className={getActiveClass} to="cast">
-              Cast
+            <FormReserv />
+            
+            {/* <NavLink className={getActiveClass} to="reservation">
+              Reservation
             </NavLink>
             <NavLink className={getActiveClass} to="reviews">
               Reviews
-            </NavLink>
-            <Link to="/meals" className="film-link">
+            </NavLink> */}
+            {/* <NavLink to="/meals" className="meal-link">
               Go Back
-            </Link>
+            </NavLink> */}
           </div>
-          {/* <Reviews/> */}
         </main>
       </>
     );
