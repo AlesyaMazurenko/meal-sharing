@@ -1,15 +1,16 @@
 import React from "react";
 import "./Home.css";
-import Header from "../../Header/Header.jsx";
+
 import { AppBar } from "../../Appbar/Appbar.jsx";
+import Main from "../../Main/Main.jsx";
 
 export default function HomePage() {
 
   return (
     <main>
      
-      <AppBar />
-      <Header />
+      {/* <AppBar /> */}
+      <Main />
    
     </main>
   );
