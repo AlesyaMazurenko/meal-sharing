@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useParams, Outlet } from "react-router";
+import { useParams } from "react-router";
 import { AppBar } from "../Appbar/Appbar";
-import { NavLink,Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import useSWR from 'swr';
 import './MealInfo.css'
+import Reviews from "../Reviews/Reviews";
 
 const fetcher = (url) => {
   return fetch(url).then((res) => res.json());
@@ -43,11 +44,11 @@ function MealInfo() {
           {error && <p>Sorry, burger is not found</p>}
           {data && (
             <div className="meal-wrapper">
-               <img
+              <img
                 className="meal-poster"
                 src={data[0].img}
                 alt={data[0].title}
-              /> 
+              />
               <div className="meal-description">
                 <h3>{data[0].title}</h3>
                 <p>{data[0].description}</p>
@@ -84,10 +85,11 @@ function MealInfo() {
             <NavLink className={getActiveClass} to="reviews">
               Reviews
             </NavLink>
-            <Link to="/" className="film-link">
+            <Link to="/meals" className="film-link">
               Go Back
             </Link>
           </div>
+          {/* <Reviews/> */}
         </main>
       </>
     );
