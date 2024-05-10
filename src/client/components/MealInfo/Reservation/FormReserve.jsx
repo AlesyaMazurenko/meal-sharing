@@ -27,7 +27,7 @@ function FormReserv() {
       meal_id: Number(meal_id),
       created_date: created_date,
     });
-    console.log('form data', formData);
+
     fetch("http://localhost:5001/api/reservations", {
       method: "POST",
       body: formData,
@@ -60,7 +60,6 @@ function FormReserv() {
         
       })
       .catch((error) => {
-        console.error("Error submitting reservation:", error);
         toast.error("Error submitting reservation", {
           position: "top-center",
           heading: "Error",
@@ -72,6 +71,7 @@ function FormReserv() {
     return (
       <>
         <div >
+          <h2>Order now</h2>
           <form className="reservation-form" onSubmit={addReservation}>
             <label>
               Name
