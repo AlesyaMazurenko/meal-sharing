@@ -1,6 +1,10 @@
-form{
-
+h2{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    text-transform: uppercase;
 }
+
 .reservation-form{
     display: flex;
     flex-direction: column;
@@ -23,7 +27,7 @@ input{
     padding: 5px 10px;
     text-decoration: none;
     color: white;
-    border: 1px solid black;
+    border: 1px solid darkgreen;
     border-radius: 5px;
     background-color: rgb(49, 183, 114);
 }
