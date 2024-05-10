@@ -17,7 +17,7 @@ function MealsList() {
  
   return (
     <div>
-      <AppBar/>
+      {/* <AppBar/> */}
       <h1>Meal list</h1>
       {data.map((meal) => (
         <MealItem key={meal.id} meal={meal} />
