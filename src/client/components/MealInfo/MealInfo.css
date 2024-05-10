@@ -12,9 +12,9 @@
 }
 
 .meal-poster {
-    /* height: 380px; */
     width: 400px;
     margin-right: 20px;
+    object-fit: cover;
 }
 
 h3{
@@ -22,7 +22,6 @@ h3{
 }
 
 .meal-description {
-   /* text-transform: uppercase; */
     width: 280px;
 }
 
