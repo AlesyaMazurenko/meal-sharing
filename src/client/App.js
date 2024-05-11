@@ -12,7 +12,6 @@ import Reviews from "./components/Reviews/Reviews.jsx";
 import Header from "./components/Header/Header.jsx";
 import { AppBar } from "./components/Appbar/Appbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
-import Reservation from "./components/Reservation/Reservation.jsx";
 
 function App() {
   return (
@@ -29,12 +28,12 @@ function App() {
 
         <Route exact path="/meals/:id">
           <MealInfo />
-          <Route  path="reviews">
+          {/* <Route  path="reviews">
             <Reviews />
-          </Route>
-          <Route path="reservation">
+          </Route> */}
+          {/* <Route path="reservation">
             <Reservation/>
-          </Route>
+          </Route> */}
         </Route>
 
         {/* <Route path="reservation" element={<Reservation />} /> */}
