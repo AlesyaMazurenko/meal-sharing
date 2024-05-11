@@ -1,0 +1,15 @@
+.reviews-item {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+h4 {
+    font-weight: 600;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.line:not(:last-child) {
+    display: block;
+    border-top: solid 1px black;
+}

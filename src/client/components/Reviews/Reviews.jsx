@@ -1,110 +1,105 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import useSWR from 'swr';
+import ReviewItem from "./ReviewItem";
 
 
 // import { getReviewsOfMovie } from "api/Api";
-import { useParams } from "react-router";
 // import RewievItem from "./ReviewItem";
 
 const fetcher = (url) => {
   return fetch(url).then((res) => res.json());
 };
 
-export default function Reviews() {
+function Reviews() {
   const { id } = useParams();
-  
-  console.log('id', id);
-  const [mealRewiev, setMealRewiev] = useState([]);
-    const [rating, setRating] = useState(null);
-    const [hover, setHover] = useState(null);
-    let errorMessage = false;
-    const currentRating = 0;
-    
-    const [newReview, setNewReview] = useState({
-      meal_id: "",
-      created_date: "",
-      title: "",
-      description: "",
-      stars:"",
-    });
 
-  const clickHandler = (event) => {
-    event.preventDefault();
+  //   const [rating, setRating] = useState(null);
+  //   const [hover, setHover] = useState(null);
+  //   let errorMessage = false;
+  const currentRating = 0;
 
-    const starValue = Number(event.target.value);
-    setRating(starValue);
+  const [newReview, setNewReview] = useState({
+    meal_id: "",
+    created_date: "",
+    title: "",
+    description: "",
+    stars: "",
+  });
 
-    const create_date = new Date().toISOString();
-  }
+  // const clickHandler = (event) => {
+  //   event.preventDefault();
 
-  //   const reviewData = JSON.stringify({
-  //       ...newReview,
-  //     stars: currentRating,
-  //     meal_id: Number(mealId),
-  //     created_date: created_date,
-  //   });
-  //   fetch("http://localhost:5001/api/reviews", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: reviewData,
-  //   })
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       console.log("Reservation successful:", data);
-  //       setNewReview({
-  //         meal_id: "",
-  //         stars: "",
-  //         create_date: "",
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error submitting reservation:", error);
-  //     });
-  // };
+  //   const starValue = Number(event.target.value);
+  //   setRating(starValue);
 
-     const { review, error, isLoading } = useSWR(
-       `http://localhost:5001/api/reviews/${id}`,
-       fetcher
-     );
-     if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error in fetching data</div>;
-  // if (review.review.length === 0) return error = true;
-    //  console.log("review", review);
-     
-  // useEffect(() => {
-  //   const fetchReview = async (id) => {
-  //     try {
-  //       const data = await getReviewsOfMeal(id);
-  //       setMealRewiev(data);
-  //     } catch (error) {
-  //       console.log(error);
+  //   const create_date = new Date().toISOString();
+  // }
+
+  // const reviewData = JSON.stringify({
+  //     ...newReview,
+  //   stars: currentRating,
+  //   meal_id: Number(mealId),
+  //   created_date: created_date,
+  // });
+  // fetch("http://localhost:5001/api/reviews", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: reviewData,
+  // })
+  //   .then((response) => {
+  //     if (!response.ok) {
+  //       throw new Error("Network response was not ok");
   //     }
-  //   };
-  //   fetchReview(id);
-  // }, [id]);
+  //     return response.json();
+  //   })
+  //   .then((data) => {
+  //     console.log("Reservation successful:", data);
+  //     setNewReview({
+  //       meal_id: "",
+  //       stars: "",
+  //       create_date: "",
+  //     });
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error submitting reservation:", error);
+  //   });
 
-//   if (movieReviews.total_results === 0) {
-//     errorMessage = true;
-//   }
+  const [mealReviews, setMealReview] = useState([]);
 
-  console.log(review);
+  let errorMessage = false;
+
+  const { data, error, isLoading } = useSWR(
+    `http://localhost:5001/api/reviews/${id}`,
+    fetcher
+  );
+
+  // setMealReview(data);
+  // console.log(mealReviews);
+  console.log("data", {data}.data);
+  // if ({data}.data === 0) return (error = true);
   return (
     <>
-      <p>Rewiev {review}</p>
-
-      <ul className="reviews-list">
-        {review.review && <RewievItem data={movieReviews.results} />}
-        {error && <p>Reviews not found</p>}
-        {review.review.length === 0 && <p>Reviews not found</p>}
-      </ul>
+      <h3>Our reviews:</h3>
+      {error && <p>Loading</p>}
+      {{ data }.data === 0 && <p>We have not review yet</p>}
+      {{ data }.data && (
+        <>
+          <ReviewItem data={{ data }.data.review} />
+        </>
+      )}
     </>
+
+    // <p>Rewiev {review}</p>
+
+    // <ul className="reviews-list">
+    //   {review.review && <RewievItem data={movieReviews.results} />}
+    //   {error && <p>Reviews not found</p>}
+    //   {review.review.length === 0 && <p>Reviews not found</p>}
+    // </ul>
+
     //      <div className="meal-star">
     //     {[...Array(5)].map((_, index) => {
     //       const starValue = index + 1;
@@ -138,3 +133,5 @@ export default function Reviews() {
     // </ul>
   );
 }
+
+export default Reviews;

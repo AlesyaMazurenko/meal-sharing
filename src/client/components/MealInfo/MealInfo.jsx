@@ -82,6 +82,7 @@ function MealInfo() {
 
           <div>
             <FormReserv />
+            <Reviews />
             
             {/* <NavLink className={getActiveClass} to="reservation">
               Reservation
