@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import useSWR from 'swr';
 import ReviewItem from "./ReviewItem";
+import ReviewForm from "./ReviewForm";
 
 
 // import { getReviewsOfMovie } from "api/Api";
@@ -83,13 +84,14 @@ function Reviews() {
   return (
     <>
       <h3>Our reviews:</h3>
-      {error && <p>Loading</p>}
+      {error && <p>Reviews not found</p>}
       {{ data }.data === 0 && <p>We have not review yet</p>}
       {{ data }.data && (
         <>
           <ReviewItem data={{ data }.data.review} />
         </>
       )}
+      <ReviewForm />
     </>
 
     // <p>Rewiev {review}</p>
