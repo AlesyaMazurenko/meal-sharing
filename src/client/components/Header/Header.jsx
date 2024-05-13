@@ -4,7 +4,7 @@ import './Main.css';
 
 export default function Main() {
     return (
-      <div>
+      <div className="line">
         <div className="container">
           <div className="div-container">
             <h1 className="header_title">
