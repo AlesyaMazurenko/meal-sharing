@@ -5,7 +5,8 @@ import { NavLink, Link } from "react-router-dom";
 import useSWR from 'swr';
 import './MealInfo.css'
 import Reviews from "../Reviews/Reviews";
-import FormReserv from "./Reservation/FormReserve";
+import FormReserv from './Reservation/FormReserve';
+import ReviewForm from "../Reviews/ReviewForm";
 
 const fetcher = (url) => {
   return fetch(url).then((res) => res.json());
@@ -83,7 +84,7 @@ function MealInfo() {
           <div>
             <FormReserv />
             <Reviews />
-            
+            <ReviewForm />
             {/* <NavLink className={getActiveClass} to="reservation">
               Reservation
             </NavLink>
