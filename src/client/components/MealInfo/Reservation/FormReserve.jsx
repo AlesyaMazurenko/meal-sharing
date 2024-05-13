@@ -4,6 +4,7 @@ import toast from "cogo-toast-react-17-fix";
 import './reserv.css';
 
 function FormReserv() {
+  const { id } = useParams();
 
   const [newReservation, setNewReservation] = useState({
     contact_name: "",
@@ -13,8 +14,6 @@ function FormReserv() {
     meal_id: "",
     created_date: "",
   });
-
-  const { id } = useParams();
 
   const addReservation = (evt) => {
     evt.preventDefault();
@@ -70,7 +69,7 @@ function FormReserv() {
       
     return (
       <>
-        <div >
+        <div className="reserv-block">
           <h2>Order now</h2>
           <form className="reservation-form" onSubmit={addReservation}>
             <label>
