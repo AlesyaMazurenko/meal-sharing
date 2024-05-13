@@ -5,11 +5,15 @@
 
 h4 {
     font-weight: 600;
-    font-style: italic;
     text-transform: uppercase;
+}
+
+p {
+    font-style: italic;
 }
 
 .line:not(:last-child) {
     display: block;
     border-top: solid 1px black;
 }
+
