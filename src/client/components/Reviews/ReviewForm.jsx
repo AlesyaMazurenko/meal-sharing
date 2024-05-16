@@ -5,7 +5,7 @@ import toast from "cogo-toast-react-17-fix";
 export default function ReviewForm() {
     const { id } = useParams();
 
-    const [newReview, setRNewReview] = useState({
+    const [newReview, setNewReview] = useState({
       created_date: "",
       description: "",
       id: "",
@@ -14,11 +14,119 @@ export default function ReviewForm() {
       title:"",
     });
 
+const addReview = (evt) => {
+    evt.preventDefault();
+    const meal_id = id;
+    const created_date = new Date().toISOString().split("T")[0];
+   
+    const formData = JSON.stringify({
+        ...newReview,
+        stars: 5,
+      id: Number(meal_id + parseInt(created_date) + Math.random(100000)),
+      meal_id: Number(meal_id),
+      created_date: created_date,
+    });
+
+    fetch("http://localhost:5001/api/reviews", {
+      method: "POST",
+      body: formData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+
+      .then((data) => {
+        console.log("Review added:", data);
+        setNewReview({
+          title: "",
+          description: "",
+          stars: "",
+        });
+
+        toast.success("Thanks for your review!", {
+          position: "bottom-center",
+          heading: "Success!",
+          hideAfter: 5, // hides the toast after 5 seconds
+        });
+      })
+      .catch((error) => {
+        toast.error("Error submitting review", {
+          position: "top-center",
+          heading: "Error",
+          hideAfter: 5,
+        });
+      }); 
+      };
+    
     return (
         <>
-            <h3>Have you tried? Leave your review!</h3>
-        </>
-    )
+        <div>
+        <h3>Have you tried? Leave your review!</h3>
+            <form className="rewiew-form" onSubmit={addReview}>
+              <label>
+                Title
+                <input
+                  type="text"
+                  name="title" //name cовпадает с полем в state.name!!
+                //   title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                  required
+                  className="input_field"
+                  value={newReview.title}
+                  onChange={(event) => {
+                    setNewReview({
+                      ...newReview,
+                      title: event.target.value.toLowerCase(),
+                    });
+                  }}
+                />
+              </label>
+              <label>
+                Description
+                <input
+                  type="text"
+                  value={newReview.description}
+                  className="input-field"
+                  name="description"
+                  required
+                  onChange={(event) => {
+                    setNewReview({
+                      ...newReview,
+                      description: event.target.value.toLowerCase(),
+                    });
+                  }}
+                />
+              </label>
+
+              {/* <label>
+                <span className="guest">Guests number</span>
+                <input
+                  type="number"
+                  value={newReservation.number_of_guests}
+                  className="input-field"
+                  name="guest"
+                  required
+                  onChange={(event) => {
+                    setNewReservation({
+                      ...newReservation,
+                      number_of_guests: Number(event.target.value),
+                    });
+                  }}
+                />
+              </label> */}
+              <button type="submit" className="form_btn">
+                Send
+              </button>
+            </form>
+          </div>
+
+      </>
+    );
 }
 // created_date: "2024-01-31T23:00:00.000Z";
 // description: "The quality of material, taste and freshness was excellent";
