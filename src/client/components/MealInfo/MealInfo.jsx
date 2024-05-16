@@ -66,6 +66,7 @@ function MealInfo() {
                 <p>
                   Price:{" "}
                   <span className="meal-description_span">{data[0].price}</span>
+                kr.
                 </p>
                 <p>
                   Available reservations:{" "}
@@ -84,7 +85,7 @@ function MealInfo() {
           <div>
             <FormReserv />
             <Reviews />
-            <ReviewForm />
+            {/* <ReviewForm /> */}
             {/* <NavLink className={getActiveClass} to="reservation">
               Reservation
             </NavLink>
