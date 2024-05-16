@@ -51,7 +51,7 @@ function FormReserv() {
           meal_id: "",
         });
 
-          toast.success("Thanks fo your reservation!", {
+          toast.success("Thanks for your reservation!", {
             position: "bottom-center",
             heading: "Success!",
             hideAfter: 5, // hides the toast after 5 seconds
@@ -60,7 +60,7 @@ function FormReserv() {
       })
       .catch((error) => {
         toast.error("Error submitting reservation", {
-          position: "top-center",
+          position: "bottom-center",
           heading: "Error",
           hideAfter: 5,
         });
