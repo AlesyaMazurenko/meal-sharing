@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { useParams } from "react-router";
-import { AppBar } from "../Appbar/Appbar";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useSWR from 'swr';
 import './MealInfo.css'
 import Reviews from "../Reviews/Reviews";
 import FormReserv from './Reservation/FormReserve';
-import ReviewForm from "../Reviews/ReviewForm";
 
 const fetcher = (url) => {
   return fetch(url).then((res) => res.json());
