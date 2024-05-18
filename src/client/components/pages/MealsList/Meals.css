@@ -4,3 +4,8 @@
     list-style: inside;
     margin-bottom: 12px;
 }
+
+.cards_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
