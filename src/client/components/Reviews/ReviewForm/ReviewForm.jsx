@@ -73,7 +73,7 @@ const addReview = (evt) => {
     
     return (
       <>
-        <div>
+        <div className="review_block">
           <h3>Have you tried? Leave your review!</h3>
           <form className="rewiew-form" onSubmit={addReview}>
             <div>
@@ -104,7 +104,6 @@ const addReview = (evt) => {
               <input
                 type="text"
                 name="title" //name cовпадает с полем в state.name!!
-                //   title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 required
                 className="input_field"
                 value={newReview.title}
@@ -132,23 +131,6 @@ const addReview = (evt) => {
                 }}
               />
             </label>
-
-            {/* <label>
-                <span className="guest">Guests number</span>
-                <input
-                  type="number"
-                  value={newReservation.number_of_guests}
-                  className="input-field"
-                  name="guest"
-                  required
-                  onChange={(event) => {
-                    setNewReservation({
-                      ...newReservation,
-                      number_of_guests: Number(event.target.value),
-                    });
-                  }}
-                />
-              </label> */}
             <button type="submit" className="form_btn">
               Send
             </button>
@@ -157,9 +139,3 @@ const addReview = (evt) => {
       </>
     );
 }
-// created_date: "2024-01-31T23:00:00.000Z";
-// description: "The quality of material, taste and freshness was excellent";
-// id: 1;
-// meal_id: 1;
-// stars: 10;
-// title: "meal quality";

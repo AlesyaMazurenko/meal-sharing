@@ -38,11 +38,6 @@ export default function MealInfo() {
         {error && <p>Sorry, burger is not found</p>}
         {data && (
           <div className="meal-wrapper">
-            {/* <img
-                      className="meal-poster"
-                      src={data[0].img}
-                      alt={data[0].title}
-                    /> */}
             <div className="meal-description">
               <h3>{data[0].title}</h3>
               <p>{data[0].description}</p>

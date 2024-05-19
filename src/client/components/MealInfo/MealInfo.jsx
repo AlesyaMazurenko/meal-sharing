@@ -13,14 +13,14 @@ const fetcher = (url) => {
 function MealInfo() {
 
   const { id } = useParams();
-     const [newReservation, setNewReservation] = useState({
-       contact_name: "",
-       contact_email: "",
-       contact_phonenumber: "",
-       number_of_guests: "",
-       meal_id: "",
-       created_date: "",
-     });
+    //  const [newReservation, setNewReservation] = useState({
+    //    contact_name: "",
+    //    contact_email: "",
+    //    contact_phonenumber: "",
+    //    number_of_guests: "",
+    //    meal_id: "",
+    //    created_date: "",
+    //  });
 
     
     const { data, error, isLoading } = useSWR(
@@ -83,16 +83,6 @@ function MealInfo() {
           <div>
             <FormReserv />
             <Reviews />
-            {/* <ReviewForm /> */}
-            {/* <NavLink className={getActiveClass} to="reservation">
-              Reservation
-            </NavLink>
-            <NavLink className={getActiveClass} to="reviews">
-              Reviews
-            </NavLink> */}
-            {/* <NavLink to="/meals" className="meal-link">
-              Go Back
-            </NavLink> */}
           </div>
         </main>
       </>
