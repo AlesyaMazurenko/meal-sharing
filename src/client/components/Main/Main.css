@@ -29,6 +29,11 @@ h1{
   padding: auto;
 }
 
+.header_title{
+  display: block;
+  padding: 20px;
+}
+
 .header_un {
   text-transform: uppercase;
   padding: 0 5px;
