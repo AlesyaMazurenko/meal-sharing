@@ -1,0 +1,19 @@
+.footer {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #000;
+  padding: 10px 0;
+  /* font-family: Nunito; */
+border-top: 2px solid rgb(62, 110, 73);
+} 
+
+.SocialIcons a {
+  padding: 1rem;
+  color: rgb(62, 110, 73);
+  font-size:x-large;
+  width: 30px;
+}
+.information span{
+  font-weight: bold;
+}

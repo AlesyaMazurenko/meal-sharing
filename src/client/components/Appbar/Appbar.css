@@ -1,0 +1,35 @@
+.appbar{
+    /* width: 80vw; */
+    height: 65px;
+    border-bottom: 2px solid rgb(62, 110, 73);
+}
+
+nav {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: right;
+}
+
+.nav-item {
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid rgb(30, 122, 52);
+    /* background-color: white; */
+    border-radius: 4px;
+    color: rgb(30, 122, 52);
+    font-weight: 600;
+}
+
+.nav-item:not(:last-child) {
+    margin-right: 14px;
+}
+
+.active {
+    color: white;
+    background-color: rgb(49, 183, 114);
+    font-weight: 900;
+}
+
+.not-active {
+ /* color: rgb(227, 233, 228); */
+}

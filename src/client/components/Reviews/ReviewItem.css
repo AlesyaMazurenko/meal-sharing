@@ -1,0 +1,23 @@
+.reviews-item {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+h4 {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+p {
+    font-style: italic;
+}
+
+.line:not(:last-child) {
+    display: block;
+    border-top: solid 1px black;
+}
+
+/* .checked {
+  color: orange;
+} */
+

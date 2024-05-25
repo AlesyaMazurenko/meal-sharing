@@ -1,0 +1,16 @@
+.meals-list {
+    display: flex;
+    flex-direction: column;
+    list-style: inside;
+    margin-bottom: 12px;
+}
+
+.cards_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h1{
+    display: flex;
+justify-content: center;
+}

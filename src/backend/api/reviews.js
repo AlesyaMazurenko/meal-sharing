@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
   console.log('req', req.params.id);
   try {
     const reviewId = req.params.id;
-    const review = await knex("review").where("id", "=", reviewId).select();
+    const review = await knex("review").where("meal_id", "=", reviewId).select();
 
     if (review.length === 0) {
       res.status(404).send("Review not found");

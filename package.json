@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Website for sharing meals",
   "engines": {
-
     "node": "^21.6.2"
   },
   "scripts": {
@@ -16,9 +15,7 @@
   "author": "Benjamin Hughes",
   "license": "MIT",
   "proxy": "http://localhost:5000",
-
   "type": "module",
-
   "dependencies": {
     "@babel/core": "^7.12.3",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
@@ -30,36 +27,38 @@
     "babel-loader": "^8.2.4",
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.3",
+    "cogo-toast-react-17-fix": "^4.2.7",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
     "css-loader": "^5.0.0",
     "debug": "~2.6.0",
-
     "dotenv": "^16.4.5",
-
     "dotenv-webpack": "^7.1.0",
     "express": "^4.16.4",
     "express-brute": "^1.0.1",
     "express-form-data": "^2.0.1",
     "html-webpack-plugin": "^4.3.0",
-
     "knex": "^0.21.1",
-
     "multer": "^1.3.0",
     "mysql2": "^2.1.0",
+    "nanoid": "^5.0.7",
     "path": "^0.12.7",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
-    "react-router-dom": "^5.0.1",
+    "react-icons": "^5.2.1",
+    "react-router-dom": "^5.3.4",
+    "react-toast": "^1.0.3",
     "sass": "^1.27.1",
     "sass-loader": "^10.0.4",
     "serve-favicon": "2.4.5",
     "style-loader": "^2.0.0",
+    "swr": "^2.2.5",
     "url-loader": "^4.1.1",
     "webpack": "5.70.0",
     "webpack-cli": "^4.9.2"
   },
   "devDependencies": {
+    "@types/react-router-dom": "^5.3.3",
     "case-sensitive-paths-webpack-plugin": "^2.3.0",
     "concurrently": "^7.0.0",
     "install-peers": "^1.0.3",

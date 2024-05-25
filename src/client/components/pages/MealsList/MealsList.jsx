@@ -1,6 +1,7 @@
 import React from 'react';
 import useSwr from 'swr';
-import MealItem from './MealItem';
+import MealItem from '../../MealItem/MealItem';
+import './Meals.css';
 
 const fetcher = (url) => {
     return fetch(url).then((res) => res.json());
@@ -13,13 +14,15 @@ function MealsList() {
   ); 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error in fetching data</div>;
-  
+ 
   return (
     <div>
-      <p>meal list</p>
-      {data.map((meal) => (
-        <MealItem key={meal.id} meal={meal} />
-      ))}
+      <h1>Meal list</h1>
+      <div className="cards_wrapper">
+        {data.map((meal) => (
+          <MealItem key={meal.id} meal={meal} />
+        ))}
+      </div>
     </div>
   );
 }
