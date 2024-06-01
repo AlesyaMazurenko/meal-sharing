@@ -1,7 +1,7 @@
 
 import 'dotenv/config';
 import path, { dirname } from 'path';
-import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
+// import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { fileURLToPath } from 'url';
