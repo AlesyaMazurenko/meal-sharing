@@ -1,6 +1,6 @@
 import React from "react";
 import { nanoid } from "nanoid";
-import './reviewItem.css';
+import './ReviewItem.css';
 
 export default function ReviewItem({ data }) {
     console.log(data);
