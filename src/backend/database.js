@@ -4,8 +4,9 @@ import 'dotenv/config';
 
 // create connection
 const myKnex = knex({
-
-  client: "mysql2",
+  client: "postgres",
+  // client: process.env.DB_CLIENT || "postgres",
+  // client: "mysql2",
   connection: {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
@@ -13,7 +14,7 @@ const myKnex = knex({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
   },
-  pool: { min: 0, max: 7 },
+  pool: { min: 2, max: 10 },
 });
 
 // Check that the connection works
