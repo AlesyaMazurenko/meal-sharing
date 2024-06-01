@@ -63,7 +63,7 @@ export default {
       template: './public/index.html',
       favicon: './public/favicon.ico',
     }),
-    new CaseSensitivePathsPlugin(),
+    // new CaseSensitivePathsPlugin(),
     new Dotenv({
       safe: false,
     }),
